@@ -4,11 +4,64 @@
 
 <head>
 	<link rel="stylesheet" href="styles.css">
+	<style>
+		#line{
+			width: 200px;
+			height: 2px;
+			background-color: black;
+		}
+		.line{
+			animation: rotate 1s linear infinite;
+		}
+		.container{
+			width: 500px;
+			height: 500px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+/* 			background-color: pink; */
+		}
+
+		@keyframes rotate{
+			from{
+				transform: rotate(0deg);
+			}
+			to{
+				transform: rotate(-360deg);
+			}
+		}
+	</style>
 </head>
 
 <body>
 	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
+	<button onclick="showElement()"> show </button>
+		<button id="start-stop" onclick="startAnimation()"> Start Animation </button>
+
+   <div class="container">
+<!-- 	   <div id="line" class="line"> </div> -->
+   </div>
+    <script>
+	const container = document.getElementsByClassName("container")[0];
+	const button = document.getElementById("start-stop");
+	   function showElement(){
+		   container.innerHTML = '';
+			const div = document.createElement("div")
+		   div.id = "line";
+			   container.append(div);
+		}
+
+		function startAnimation() {
+			const line = document.getElementById("line")
+			if(line.className){
+				line.className = "";
+				button.innerText = "Start Animation";
+			}else{
+				line.className = "line";
+				button.innerText = "Stop Animation";
+			}
+		}
+		
 </script>
 
 </body>
